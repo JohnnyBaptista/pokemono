@@ -52,7 +52,7 @@ module.exports = {
     async delete(req, res) {
         try {
             const { id } = req.params;
-            const { treinador } = await treinadorModel.get(req.body.id);
+            const { treinador } = await treinadorModel.get(id);
             if(treinador.length > 0) { 
                 const response = await treinadorModel.delete(id);
                 if(response) {
