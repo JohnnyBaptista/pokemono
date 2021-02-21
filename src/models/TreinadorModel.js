@@ -1,19 +1,16 @@
 const connection = require("../database/config");
+const queryExecuter = require("../helpers/queryExecuter");
+
 module.exports = {
   insert(data) {
     try {
       if (data) {
         const { name, city, email, password, exp, genre } = data;
-        return new Promise((resolve, reject) => {
-          connection.query(
-            "INSERT INTO treinador (nome, cidade, email, senha, exp, genero) VALUES (?, ?, ?, ?, ?, ?)",
-            [name, city, email, password, exp, genre],
-            (error, result) => {
-              if (error) reject(error);
-              resolve(result);
-            }
-          );
-        });
+        return queryExecuter(
+          connection,
+          "INSERT INTO treinador (nome, cidade, email, senha, exp, genero) VALUES (?, ?, ?, ?, ?, ?)",
+          [name, city, email, password, exp, genre]
+        );
       }
     } catch (e) {
       throw e;
@@ -22,15 +19,7 @@ module.exports = {
 
   getAll() {
     try {
-      return new Promise((resolve, reject) => {
-        connection.query(
-          "SELECT * FROM treinador",
-          (error, result) => {
-            if (error) reject(error);
-            resolve(result);
-          }
-        );
-      });
+      return queryExecuter(connection, "SELECT * FROM treinador", []);
     } catch (e) {
       throw e;
     }
@@ -38,17 +27,13 @@ module.exports = {
 
   get(id) {
     try {
-        return new Promise((resolve, reject) => {
-          connection.query(
-            "SELECT * FROM treinador WHERE treinador.id =  ?", [id],
-            (error, result) => {
-              if (error) reject(error);
-              resolve(result);
-            }
-          );
-        });
-      } catch (e) {
-        throw e;
-      } 
-  }
+      return queryExecuter(
+        connection,
+        "SELECT * FROM treinador WHERE treinador.id =  ?",
+        [id]
+      );
+    } catch (e) {
+      throw e;
+    }
+  },
 };
