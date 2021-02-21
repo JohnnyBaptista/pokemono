@@ -36,4 +36,27 @@ module.exports = {
       throw e;
     }
   },
+
+  delete(id) {
+    try {
+      return queryExecuter(connection, "DELETE FROM treinador WHERE treinador.id = ?", [id]);
+    } catch (e) {
+      throw e;
+    }
+  },
+
+  update(data) {
+    try {
+      if (data) {
+        const { name, city, email, password, exp, genre, id } = data;
+        return queryExecuter(
+          connection,
+          "UPDATE treinador SET nome = ?, cidade = ?, email = ?, senha = ?, exp = ?, genero = ? WHERE treinador.id = ?",
+          [name, city, email, password, exp, genre, id]
+        );
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
 };

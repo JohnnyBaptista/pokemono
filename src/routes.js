@@ -9,6 +9,8 @@ const tipoItemController = require('../src/controllers/TipoItemController');
 router.post('/treinador', treinadorController.store);
 router.get('/treinadores', treinadorController.index);
 router.get('/treinador/:id', treinadorController.getById);
+router.delete('/treinador/:id', treinadorController.delete);
+router.put('/treinador', treinadorController.update);
 
 //endpoint tipoItem
 router.post('/tipoItem', tipoItemController.store);
