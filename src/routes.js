@@ -16,5 +16,7 @@ router.put('/treinador', treinadorController.update);
 router.post('/tipoItem', tipoItemController.store);
 router.get('/tipoItem', tipoItemController.index);
 router.get('/tipoItem/:id', tipoItemController.getById);
+router.delete('/tipoItem/:id', tipoItemController.delete);
+router.put('/tipoItem', tipoItemController.update);
 
 module.exports = router;

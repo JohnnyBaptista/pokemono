@@ -52,18 +52,18 @@ module.exports = {
     async delete(req, res) {
         try {
             const { id } = req.params;
-            const { treinador } = await treinadorModel.get(id);
+            const treinador  = await treinadorModel.get(id);
             if(treinador.length > 0) { 
                 const response = await treinadorModel.delete(id);
                 if(response) {
                     return res.status(200).json({msg: `Treinador deletado com sucesso!`});
-                } else return res.status(400).json({treinador: null, msg: 'Não há treinador com esse ID'});
+                } else return res.status(400).json({treinador: null, msg: 'FATAL ERROR'});
             } else {
                 return res.status(400).json({msg: "Treinador com esse ID não existe!"});
             }
         } catch(e) {
             console.log(e);
-            return res.status(400).json({msg: e});
+            return res.status(500).json({msg: e});
         }
     }
 }
