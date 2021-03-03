@@ -12,7 +12,7 @@ module.exports = {
 
     getAll() {
         try {
-            const sql = "SELECT pokemon_treinador.id_pokemon treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador"
+            const sql = "SELECT pokemon_treinador.id_pokemon, treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador"
             return queryExecuter(connection, sql, []);
         } catch (e) {
           throw e;
@@ -21,7 +21,7 @@ module.exports = {
 
     getByTrainerId(id) { //os pokemon do treinador X
       try {
-        const sql = "SELECT pokemon_treinador.id_pokemon treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador WHERE treinador.id = ?"
+        const sql = "SELECT pokemon_treinador.id_pokemon, treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador WHERE treinador.id = ?"
         return queryExecuter(
           connection,
           sql,
@@ -34,7 +34,7 @@ module.exports = {
 
     getByPokemonAndTrainerId(idTreinador, idPokemon) { //pokemon especifico do treinador X
       try {
-        const sql = "SELECT pokemon_treinador.id_pokemon treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador WHERE treinador.id = ? AND pokemon_treinador.id_pokemon = ?"
+        const sql = "SELECT pokemon_treinador.id_pokemon, treinador.nome FROM pokemon_treinador JOIN treinador ON treinador.id = pokemon_treinador.id_treinador WHERE treinador.id = ? AND pokemon_treinador.id_pokemon = ?"
         return queryExecuter(
           connection,
           sql,
