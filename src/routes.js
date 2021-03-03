@@ -5,6 +5,7 @@ const router = express.Router();
 const treinadorController = require('../src/controllers/TreinadorController');
 const tipoItemController = require('../src/controllers/TipoItemController');
 const itemTreinadorController = require('../src/controllers/ItemTreinadorController');
+const pokemonTreinadorController = require('./controllers/PokemonTreinadorController');
 const batalhaController = require('./controllers/BatalhaController');
 
 //endpoints para treinador (crud)
@@ -26,6 +27,10 @@ router.post('/itemTreinador', itemTreinadorController.store);
 router.get('/itemTreinador', itemTreinadorController.index);
 router.get('/itemTreinador/:id', itemTreinadorController.getById);
 
+//endpoint pokemontreinador
+router.post('/pokemon', pokemonTreinadorController.store)
+router.get('/pokemon', pokemonTreinadorController.index)
+router.get('/pokemon/treinador/:id', pokemonTreinadorController.getByTrainerId)
 //endpoints batalha
 router.post('/batalha', batalhaController.store);
 router.get('/batalha', batalhaController.index);
