@@ -6,7 +6,7 @@ const treinadorController = require('../src/controllers/TreinadorController');
 const tipoItemController = require('../src/controllers/TipoItemController');
 const itemTreinadorController = require('../src/controllers/ItemTreinadorController');
 const pokemonTreinadorController = require('./controllers/PokemonTreinadorController');
-
+const batalhaController = require('./controllers/BatalhaController');
 
 //endpoints para treinador (crud)
 router.post('/treinador', treinadorController.store);
@@ -15,7 +15,7 @@ router.get('/treinador/:id', treinadorController.getById);
 router.delete('/treinador/:id', treinadorController.delete);
 router.put('/treinador', treinadorController.update);
 
-//endpoint tipoItem
+//endpoints tipoItem
 router.post('/tipoItem', tipoItemController.store);
 router.get('/tipoItem', tipoItemController.index);
 router.get('/tipoItem/:id', tipoItemController.getById);
@@ -31,5 +31,10 @@ router.get('/itemTreinador/:id', itemTreinadorController.getById);
 router.post('/pokemon', pokemonTreinadorController.store)
 router.get('/pokemon', pokemonTreinadorController.index)
 router.get('/pokemon/treinador/:id', pokemonTreinadorController.getByTrainerId)
+//endpoints batalha
+router.post('/batalha', batalhaController.store);
+router.get('/batalha', batalhaController.index);
+router.get('/batalha/:id', batalhaController.getById);
+router.delete('/batalha/:id', batalhaController.delete);
 
 module.exports = router;
