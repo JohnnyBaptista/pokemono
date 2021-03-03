@@ -17,9 +17,13 @@ module.exports = {
             const { email, senha } = req.body;
             const response = await treinadorModel.login(email, senha);
             if (response.length > 0) {
-                return res.status(200).json(response);
+                if(response[0].senha === senha) {
+                    return res.status(200).json(response);
+                } else {
+                    return res.status(400).json({msg: 'Erro ao logar, tente novamente!'});
+                }
             } else {
-                return res.status(404).json({msg: "USUÁRIO NÃO ENCONTRADO!"});
+                return res.status(404).json({msg: "EMAIL NÃO ENCONTRADO!"});
             }
         } catch (e) {
             console.log(e);
