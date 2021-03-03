@@ -5,7 +5,7 @@ const router = express.Router();
 const treinadorController = require('../src/controllers/TreinadorController');
 const tipoItemController = require('../src/controllers/TipoItemController');
 const itemTreinadorController = require('../src/controllers/ItemTreinadorController');
-
+const batalhaController = require('./controllers/BatalhaController');
 
 //endpoints para treinador (crud)
 router.post('/treinador', treinadorController.store);
@@ -14,7 +14,7 @@ router.get('/treinador/:id', treinadorController.getById);
 router.delete('/treinador/:id', treinadorController.delete);
 router.put('/treinador', treinadorController.update);
 
-//endpoint tipoItem
+//endpoints tipoItem
 router.post('/tipoItem', tipoItemController.store);
 router.get('/tipoItem', tipoItemController.index);
 router.get('/tipoItem/:id', tipoItemController.getById);
@@ -25,5 +25,11 @@ router.put('/tipoItem', tipoItemController.update);
 router.post('/itemTreinador', itemTreinadorController.store);
 router.get('/itemTreinador', itemTreinadorController.index);
 router.get('/itemTreinador/:id', itemTreinadorController.getById);
+
+//endpoints batalha
+router.post('/batalha', batalhaController.store);
+router.get('/batalha', batalhaController.index);
+router.get('/batalha/:id', batalhaController.getById);
+router.delete('/batalha/:id', batalhaController.delete);
 
 module.exports = router;
