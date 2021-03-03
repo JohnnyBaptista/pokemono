@@ -6,7 +6,7 @@ module.exports = {
             const teste = [req.body.id_desafiado, req.body.id_desafiante];
             const vencedor = teste[Math.floor(Math.random() * teste.length)];
             const response = await batalhaModel.insert(req.body.id_desafiado, req.body.id_desafiante, vencedor);
-            if (response) return res.status(200).json({ msg: "Inserido com sucesso!" })
+            if (response) return res.status(200).json({ msg: "Inserido com sucesso!", vencedor })
         } catch(e) {
             console.log(e);
             return res.status(400).json({ msg: e});

@@ -11,6 +11,21 @@ module.exports = {
             return res.status(400).json({msg: e});
         }
     },
+    
+    async login(req, res) {
+        try {
+            const { email, senha } = req.body;
+            const response = await treinadorModel.login(email, senha);
+            if (response.length > 0) {
+                return res.status(200).json(response);
+            } else {
+                return res.status(404).json({msg: "USUÁRIO NÃO ENCONTRADO!"});
+            }
+        } catch (e) {
+            console.log(e);
+            return res.status(400).json({msg: e});
+        }
+    },
 
     async update(req, res) {
         try {

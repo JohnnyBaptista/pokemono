@@ -17,6 +17,17 @@ module.exports = {
     }
   },
 
+  login(email) {
+    try {
+      if(email) {
+        return queryExecuter(
+          connection, "SELECT * FROM treinador WHERE email = ?", [email]);
+      }
+    } catch (e) {
+      throw e;
+    }
+  },
+
   getAll() {
     try {
       return queryExecuter(connection, "SELECT * FROM treinador", []);
