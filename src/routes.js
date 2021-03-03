@@ -10,6 +10,7 @@ const batalhaController = require('./controllers/BatalhaController');
 
 //endpoints para treinador (crud)
 router.post('/treinador', treinadorController.store);
+router.post('/login', treinadorController.login)
 router.get('/treinadores', treinadorController.index);
 router.get('/treinador/:id', treinadorController.getById);
 router.delete('/treinador/:id', treinadorController.delete);
